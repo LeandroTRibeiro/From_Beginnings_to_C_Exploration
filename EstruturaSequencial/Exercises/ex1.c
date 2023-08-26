@@ -18,5 +18,7 @@ main() {
 
     res=n1-n2;
 
-    printf("A subtracao entre %f e %f e de : %f.", n1, n2, res);
+    printf("A subtracao entre %.2f e %.2f e de : %.2f.", n1, n2, res);
+
+    return 0;
 };
