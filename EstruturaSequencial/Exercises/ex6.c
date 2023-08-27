@@ -27,7 +27,7 @@ main() {
     printf("\n---------------------------------");
     printf("---------------------------------");
 
-    salesCommissionV=(salesCommissionP*salary)/100;
+    salesCommissionV=(salesCommissionP*sales)/100;
     newSalary=salesCommissionV+salary;
 
     printf("\nfuncionario(a): %s", worker);
@@ -36,6 +36,8 @@ main() {
     printf("\nporcentagem da comissao: %.2f%%", salesCommissionP);
     printf("\nvalor da comissao: R$%.2f", salesCommissionV);
     printf("\nvalor total do salario: R$%.2f", newSalary);
+    printf("\n---------------------------------");
+    printf("---------------------------------");
     printf("\n---------------------------------");
     printf("---------------------------------");
     printf("\n---------------------------------");
