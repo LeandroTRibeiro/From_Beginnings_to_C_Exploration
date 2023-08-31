@@ -1,5 +1,3 @@
-#include<stdio.h>
-
-main() {
-    printf("Hello World!");
-};
+    printf("-----------------------------------");
+    printf("\ncalculadora de area de trapezio");
+    printf("\n-----------------------------------\n");
