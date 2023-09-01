@@ -21,9 +21,16 @@ main() {
     printf("digite o valor do salario minimo atual: ");
     scanf("%f", &minimumSalary);
 
-    howManyMinumumSalary=
+    howManyMinumumSalary=workerSalary/minimumSalary;
 
     printf("\n-----------------------------------\n"); 
     printf("-----------------------------------\n");
-    printf
+    printf("\ntrabalhador: %s", worker);
+    printf("\nsalario minimo atual: R$%.2f", minimumSalary);
+    printf("\nsalario do funcionario: R$%.2f", workerSalary);
+    printf("\n%s recebe %.2f salarios minimos.", worker, howManyMinumumSalary);
+    printf("\n-----------------------------------\n"); 
+    printf("-----------------------------------\n");
+
+    return 0;
 }
