@@ -6,6 +6,7 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <conio.h>
 
 struct Data {
     double angleInDegrees;
@@ -93,6 +94,9 @@ int main() {
     printf("########### FIM DO PROGRAMA ##########");
     printf("\n######################################\n"); 
     printf("######################################\n");
+
+    printf("\nPressione qualquer tecla para sair: \n");
+    getch();
     
     return 0;
 };
