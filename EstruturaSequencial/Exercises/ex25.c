@@ -26,7 +26,7 @@ int main() {
     int lenght=0;
     char repeat, save, showData;
 
-    struct Data history[100];
+    struct Data registers[100];
 
     printf("\n######################################\n"); 
     printf("######################################\n");
@@ -55,14 +55,14 @@ int main() {
         scanf(" %c", &save);
 
         if(save == 's' || save == 'S') {
-            history[lenght].angleInDegrees=angleInDegrees;
-            history[lenght].angleInRadians=angleInRadians;
-            history[lenght].seno=seno;
-            history[lenght].coseno=coseno;
-            history[lenght].tangente=tangente;
-            history[lenght].secante=secante;
-            history[lenght].cosecante=cosecante;
-            history[lenght].cotangente=cotangente;
+            registers[lenght].angleInDegrees=angleInDegrees;
+            registers[lenght].angleInRadians=angleInRadians;
+            registers[lenght].seno=seno;
+            registers[lenght].coseno=coseno;
+            registers[lenght].tangente=tangente;
+            registers[lenght].secante=secante;
+            registers[lenght].cosecante=cosecante;
+            registers[lenght].cotangente=cotangente;
             lenght++;
         };
 
@@ -82,7 +82,7 @@ int main() {
         for(int i = 0; i < lenght; i++) {
             printf("\nCadastro: %d", i+1);
 
-            printRes(history[i].angleInDegrees, history[i].angleInRadians, history[i].seno, history[i].coseno, history[i].tangente, history[i].secante, history[i].cosecante, history[i].cotangente);
+            printRes(registers[i].angleInDegrees, registers[i].angleInRadians, registers[i].seno, registers[i].coseno, registers[i].tangente, registers[i].secante, registers[i].cosecante, registers[i].cotangente);
 
             printf("\n######################################\n"); 
             printf("######################################\n");
