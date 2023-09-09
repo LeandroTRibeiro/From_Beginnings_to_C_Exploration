@@ -1,7 +1,7 @@
 /*
 
-28. Elabore um algoritmo que leia 3 notas de um aluno, calcule e mostre a média ponderada, considerando 
-os seguintes pesos: 2 para a primeira nota, 3 para a segunda nota, e 5 para a terceira nota.
+29. Elabore um algoritmo que receba 3 notas, seus respectivos pesos, calcule e imprima a média 
+ponderada dessas notas.
 
 */
 

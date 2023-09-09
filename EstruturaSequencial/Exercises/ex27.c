@@ -20,7 +20,7 @@ struct Student {
     char name[100];
     int classRoom;
     struct Dicipline diciplines[100];
-    int diciplinesLenght
+    int diciplinesLenght;
 };
 
 float averageReduce(float grades[], int size);
