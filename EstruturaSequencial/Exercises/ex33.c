@@ -1,9 +1,11 @@
 /*
 
-30. Elabore um algoritmo que receba o salário de um funcionário, calcule e mostre o novo salário, 
-sabendo-se que este salário sofreu um aumento de 25%.
+33. Elabore um algoritmo que leia o salário-base de um funcionário, calcule e mostre o seu salário a 
+receber, sabendo-se que esse funcionário tem gratificação de R$ 50,00 e paga imposto de 10% sobre 
+o salário-base.
 
 */
+
 
 #include <stdio.h>
 #include <conio.h>
@@ -17,6 +19,7 @@ struct Worker {
     float absents;
     float daysWorked;
     float month;
+    float INSS;
 };
 
 int exitProgram();
@@ -48,11 +51,14 @@ int main() {
         scanf(" %f", &workers[workersLength].salary);
         printf("\nDigite a quantidade total de dias no mes: "); 
         scanf(" %f", &workers[workersLength].month);
-        printf("\nDeseja adicionar aumento de salario? (S/N)");
+        printf("\nDigite a porcentagem de desconto do INSS: (%%)");
+        scanf(" %f", &workers[workersLength].INSS);
+
+        printf("\nDeseja adicionar gratificacao de salario? (S/N)");
         scanf(" %c", &addIncrease);
 
         if(addIncrease == 's' || addIncrease == 'S') {
-            printf("\nDeseja adicionar o aumento em valor real (R$) ou porcentagem (%%)? (R/P)");
+            printf("\nDeseja adicionar a gratificacao em valor real (R$) ou porcentagem (%%)? (R/P)");
             scanf(" %c", &valueDisplayMode);
 
             if(valueDisplayMode == 'p' || valueDisplayMode == 'P') {
@@ -66,7 +72,7 @@ int main() {
             };
         };
 
-        printf("\nO funcionario(a) cometeu faltas no mes? (S/N)");
+        printf("\nO funcionario(a) cometeu faltas no mês? (S/N)");
         scanf(" %c", &absents);
 
         if(absents == 's' || absents == 'S') {
@@ -87,7 +93,7 @@ int main() {
                     workers[workersLength].salaryIncreaseInReal = (workers[workersLength].salary * workers[workersLength].salaryIncreaseInPercentage) / 100; 
                 };
             
-            workers[workersLength].finalSalary = ((workers[workersLength].salary + workers[workersLength].salaryIncreaseInReal) * workers[workersLength].daysWorked) / workers[workersLength].month;
+            workers[workersLength].finalSalary = (((workers[workersLength].salary - ((workers[workersLength].salary * workers[workersLength].INSS)/100)) + workers[workersLength].salaryIncreaseInReal) * workers[workersLength].daysWorked) / workers[workersLength].month;
         };
 
         printf("\nDeseja realizar mais um cadastro de funcionario? (S/N)");
@@ -105,10 +111,10 @@ int main() {
         printf("\nFaltas: %.0f", workers[i].absents);
         printf("\nDias trabalhados: %.0f", workers[i].daysWorked);
         printf("\nSalario Base do mes: R$%.2f", workers[i].salary);
-        printf("\nAumento em Porcentagem: %.2f%%", workers[i].salaryIncreaseInPercentage);
-        printf("\nAumento em Real: R$%.2f", workers[i].salaryIncreaseInReal);
-        printf("\n--------------------------------------\n");
-        printf("\nSALARIO FINAL: R$%.2f", workers[i].finalSalary);
+        printf("\nGratificacao em Porcentagem: %.2f%%", workers[i].salaryIncreaseInPercentage);
+        printf("\nGratificacao em Real: R$%.2f", workers[i].salaryIncreaseInReal);
+        printf("\nDesconto do INSS: %.2f%%", workers[i].INSS);
+        printf("\n\nSALARIO FINAL: R$%.2f\n\n", workers[i].finalSalary);
         printf("\n######################################\n");
         printf("\n--------------------------------------\n");
     };
