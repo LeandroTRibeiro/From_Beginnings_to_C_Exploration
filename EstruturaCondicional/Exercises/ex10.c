@@ -23,7 +23,7 @@ struct EmployeesRegister {
     char name[100];
     char jobFunction[100];
     float salary;
-    int recentIncrease[2];
+    float recentIncrease[2];
 };
 
 struct EmployeesRegister employeesRegisters[100];
@@ -32,6 +32,10 @@ int employeesRegisterLenght=0;
 void showRegisters();
 void registerEmployee();
 void editRegister();
+void increaseEveryone();
+void increasePfunc(float percentage);
+void increaseRfunc(float increaseValue);
+void increaseByFunc();
 
 int finishProgram();
 
@@ -59,6 +63,12 @@ int main() {
             break;
         case 3: 
             editRegister();
+            break;
+        case 4:
+            increaseEveryone();
+            break;
+        case 5:
+            increaseByFunc();
             break;
         default:
             printf("\nOpcao inexistente!");
@@ -88,7 +98,7 @@ void showRegisters() {
         printf("\nFuncao: %s\n", employeesRegisters[i].jobFunction);
         printf("\nSalario: %.2f\n", employeesRegisters[i].salary);
         if(employeesRegisters[i].recentIncrease[0] != 0) 
-            printf("\nRecebeu aumento recentemente de %.2f\n", employeesRegisters[i].recentIncrease[1]);
+            printf("\nRecebeu aumento recentemente de R$%.2f\n", employeesRegisters[i].recentIncrease[1]);
         else 
             printf("\nFuncionario nao recebeu aumento recentemente\n");
         
@@ -138,7 +148,7 @@ void editRegister() {
     struct EmployeesRegister editRegister[100];
 
     printf("\n#################################\n");
-    printf("\nQual o numero cadastro deseja editar?");
+    printf("\nQual o numero cadastro que deseja editar?");
     scanf(" %d", &employee);
 
     if(strlen(employeesRegisters[employee-1].name) == 0) {
@@ -157,7 +167,7 @@ void editRegister() {
     printf("\nDigite a nova funcao: ");
     scanf(" %[^\n]", &editRegister[0].jobFunction);
     printf("Digite o novo salario: ");
-    scanf(" %[^\n]", &editRegister[0].salary);
+    scanf(" %f", &editRegister[0].salary);
 
     printf("\n#################################\n");
 
@@ -173,8 +183,119 @@ void editRegister() {
     if (confirm == 's' || confirm == 'S') {
         strcpy(employeesRegisters[employee-1].name, editRegister[0].name);
         strcpy(employeesRegisters[employee-1].jobFunction, editRegister[0].jobFunction);
+        employeesRegisters[employee-1].salary = editRegister[0].salary;
+
+        printf("\nCadastro editado com sucesso!\n");
+    };
+
+    return;
+};
+
+void increaseEveryone() {
+    char confirm, increaseMethod;
+    float increaseP, increaseR;
+
+    printf("\nGostaria de aumentar para todos os funcionarios(a) por porcentagem ou valor em real? (P/R)");
+    scanf(" %c", &increaseMethod);
+
+    switch (increaseMethod) {
+    case 'P':
+    case 'p':
+        printf("\nDigite o valor da porcentagem:(%%)\n");
+        scanf(" %f", &increaseP);
+        printf("\nTem certeza que deseja realizar um aumento de %.2f%% para todos funcionarios? (S/N)");
+        scanf(" %c", &confirm);
+        if(confirm == 's' || confirm == 'S') {
+            increasePfunc(increaseP);
+            printf("\nAumentos realizado com sucesso!\n");
+        };
+        break;
+    case 'r':
+    case 'R':
+        printf("\nDigite o valor em real: (R$)");
+        scanf(" %f", &increaseR);
+        printf("\nTem certeza que deseja realizar um aumento de R$%.2f para todos funcionarios? (S/N)");
+        scanf(" %c", &confirm);
+        if(confirm == 's' || confirm == 'S') {
+            increaseRfunc(increaseR);
+            printf("\nAumentos realizado com sucesso!\n");
+        };
+        break;
+    default:
+        printf("\nVocê não digitou um caracter valido!\n");
+        break;
+    };
+
+    return;
+};
+
+void increasePfunc(float percentage) {
+
+    float percentageValue;
+
+    for (int i = 0; i < employeesRegisterLenght; i++) {
+        percentageValue = (employeesRegisters[i].salary * percentage) / 100;
+        employeesRegisters[i].salary = employeesRegisters[i].salary + percentageValue;
+        employeesRegisters[i].recentIncrease[0] = 1;
+        employeesRegisters[i].recentIncrease[1] = percentageValue;
     };
     
+    return;
+};
+
+void increaseRfunc(float increaseValue) {
+
+    for (int i = 0; i < employeesRegisterLenght; i++) {
+        employeesRegisters[i].salary = employeesRegisters[i].salary + increaseValue;
+        employeesRegisters[i].recentIncrease[0] = 1;
+        employeesRegisters[i].recentIncrease[1] = increaseValue;
+    };
+};
+
+void increaseByFunc() {
+    char confirm, increaseMethod;
+    char jobFunction[100];
+    // finishing this func
+
+    printf("\nDigite o nome da funcao que deseja aumentar o salario: ");
+    scanf(" %[^\n]", &jobFunction);
+    printf("\nGostaria de aumentar para todos os funcionarios(a) por porcentagem ou valor em real? (P/R)");
+    scanf(" %c", &increaseMethod);
+
+    switch (increaseMethod) {
+    case 'P':
+    case 'p':
+        printf("\nDigite o valor da porcentagem:(%%)\n");
+        scanf(" %f", &increaseP);
+        printf("\nTem certeza que deseja realizar um aumento de %.2f%% para todos funcionarios? (S/N)");
+        scanf(" %c", &confirm);
+        if(confirm == 's' || confirm == 'S') {
+            increasePfunc(increaseP);
+            printf("\nAumentos realizado com sucesso!\n");
+        };
+        break;
+    case 'r':
+    case 'R':
+        printf("\nDigite o valor em real: (R$)");
+        scanf(" %f", &increaseR);
+        printf("\nTem certeza que deseja realizar um aumento de R$%.2f para todos funcionarios? (S/N)");
+        scanf(" %c", &confirm);
+        if(confirm == 's' || confirm == 'S') {
+            increaseRfunc(increaseR);
+            printf("\nAumentos realizado com sucesso!\n");
+        };
+        break;
+    default:
+        printf("\nVocê não digitou um caracter valido!\n");
+        break;
+    };
+
+    for(int i = 0; i < employeesRegisterLenght; i++) {
+
+        if(strcmp(employeesRegisters[i].jobFunction, jobFunction) == 0) {
+            
+        };
+    };
 
     return;
 };
