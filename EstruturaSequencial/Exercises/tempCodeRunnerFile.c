@@ -1,1 +1,1 @@
-        workers[workersLength].finalSalary = (workers[workersLength].finalSalary / workers[workersLength].month) * workers[workersLength].daysWorked;
+conio
