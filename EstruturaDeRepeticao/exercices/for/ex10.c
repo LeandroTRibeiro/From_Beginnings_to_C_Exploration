@@ -1,6 +1,8 @@
 /*
+
     10) Elabore um algoritmo que leia 20 números e imprima a soma dos positivos, e a quantidade de números
 negativos.
+
 */
 
 #include <stdio.h>

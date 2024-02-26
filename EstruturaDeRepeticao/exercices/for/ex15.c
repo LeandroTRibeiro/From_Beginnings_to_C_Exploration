@@ -19,4 +19,5 @@ int main() {
             printf("%d x ", i);
     };
     printf("\nFatorial: %d", factorial);
+    return 0;
 };
