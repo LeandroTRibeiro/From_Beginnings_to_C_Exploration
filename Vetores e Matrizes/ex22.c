@@ -15,7 +15,8 @@ M41 M42 M43 M44
 int main() {
     int matrixLength;
     int matrix[100][100];
-    int sum = 0;
+    int min = 999;
+    int row = 0;
 
     printf("\nDigite o tamanho da matriz quadrada: ");
     scanf(" %d", &matrixLength);
@@ -27,11 +28,16 @@ int main() {
         };
     };
 
-    for(int i = matrixLength - 1; i >= 0; i--) {
-        sum += matrix[i][i];
-    };
 
-    printf("\nA soma da diagonal secundaria da matriz e de: %d", sum);
+    for(int i = matrixLength - 1; i >= 0; i--) {
+        if(matrix[row][i] < min) {
+            min = matrix[row][i];
+        };
+        row++;
+    };
+    
+
+    printf("\nO menor elemento da diagonal secundaria da matriz e: %d", min);
 
     return 0;
 };
