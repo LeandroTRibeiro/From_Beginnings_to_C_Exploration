@@ -1,0 +1,1 @@
+        // v[i] < *min ? *min = v[i] : v[i] > *max ? *max = v[i] : 0;

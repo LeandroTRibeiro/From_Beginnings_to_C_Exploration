@@ -1,0 +1,56 @@
+/*
+3) Faça uma função que receba 50 notas e seus respectivos pesos, calcule a média
+ponderada dessas notas e retorne o resultado.
+*/
+
+#include <stdio.h>
+#include <conio.h>
+
+void getValues(float *array, int size, char *name);
+float calcGrade(float *grades, float *weight, int tests);
+int finishProgram();
+
+int main() {
+    float *grades[100];
+    float weigth[100];
+    int tests;
+
+    printf("\nDigite a quantidade de provas a calcular: ");
+    scanf(" %d", &tests);
+
+    getValues(grades, tests, "nota");
+    getValues(weigth, tests, "peso");
+
+    printf("\nA media das seguintes notas e pesos e de: %.2f", calcGrade(grades, weigth, tests));
+
+    return finishProgram();
+};
+
+void getValues(float *array, int size, char *name) {
+
+    for(int i = 0; i < size; i++) {
+        printf("\nDigite o valor do(a) %s %d: ", name, i + 1);
+        scanf(" %f", &array[i]);
+    };
+    return;
+};
+
+float calcGrade(float *grades, float *weight, int tests) {
+    float grade = 0;
+    float weigth = 0;
+
+    for(int i = 0; i < tests; i++) {
+        grade += grades[i] * weight[i];
+        weigth += weight[i];
+    };
+
+    return grade / weigth;
+};
+
+int finishProgram() {
+    printf("\n###################################################\n");
+    printf("Pressione qualquer tecla para encerrar!");
+    getch();
+
+    return 0;
+};
